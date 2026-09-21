@@ -1,0 +1,8 @@
+{
+  "description": "Seed personas were removed in favor of procedural generation. Load trait_pools.json and run generate_persona.py to produce AgentPersona-shaped JSON.",
+  "trait_pools": "trait_pools.json",
+  "generator_script": "generate_persona.py",
+  "schema": "../schemas/agent.schema.v2.json",
+  "example_prompt_stdout": "python3 generate_persona.py --count 2 --format prompt",
+  "example_json_file": "python3 generate_persona.py --count 5 --format json --out generated_team.json"
+}

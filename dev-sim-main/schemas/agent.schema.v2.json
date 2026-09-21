@@ -1,0 +1,222 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dev-sim.local/schemas/agent.schema.v2.json",
+  "title": "AgentPersona",
+  "description": "A simulated teammate. v2: git_identity, stack token arrays, controlled vocabulary; voice guardrails live in role prompts.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "display_name",
+    "role",
+    "seniority",
+    "years_experience",
+    "git_identity",
+    "preferred_stack",
+    "personality_traits",
+    "work_style",
+    "communication_style",
+    "strengths",
+    "weaknesses"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_-]{2,}$",
+      "description": "Stable slug. Used for routing, memory keys, file names, and deterministic avatar seeding."
+    },
+    "display_name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 60,
+      "description": "Shown in UI and in-character messages."
+    },
+    "role": {
+      "enum": [
+        "frontend",
+        "backend",
+        "tech_lead",
+        "scrum_master",
+        "reviewer"
+      ],
+      "description": "Primary job family. Selects the role-level base prompt; role voice guardrails live there, not per-persona."
+    },
+    "seniority": {
+      "enum": ["junior", "mid", "senior", "staff"],
+      "description": "Band for pacing, review depth, and default autonomy."
+    },
+    "years_experience": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 50,
+      "description": "Used by scoring rules. Should be consistent with seniority (enforced in code, not schema)."
+    },
+    "git_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "email"],
+      "description": "Used by the GitHub pipeline so commits and PR comments are attributed per-agent.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 60
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Per-agent email. Recommended convention: '<id>@devsim.local'."
+        }
+      }
+    },
+    "preferred_stack": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_+.-]*$"
+      },
+      "description": "Normalized stack tokens (react, typescript, postgres, go, tailwind, ...)."
+    },
+    "disliked_stack": {
+      "type": "array",
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_+.-]*$"
+      },
+      "description": "Tokens this persona resists. Omit entirely if none."
+    },
+    "personality_traits": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 5,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "perfectionist",
+          "shipper",
+          "pedant",
+          "mentor",
+          "rockstar",
+          "chaotic_good",
+          "contrarian",
+          "consensus_builder",
+          "risk_averse",
+          "risk_seeking",
+          "pragmatist",
+          "idealist"
+        ]
+      }
+    },
+    "work_style": {
+      "enum": [
+        "tdd_first",
+        "spike_and_iterate",
+        "heads_down",
+        "pair_first",
+        "meeting_heavy",
+        "documentation_led"
+      ]
+    },
+    "communication_style": {
+      "enum": [
+        "terse",
+        "verbose",
+        "diplomatic",
+        "blunt",
+        "socratic",
+        "encouraging"
+      ]
+    },
+    "strengths": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 4,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "speed",
+          "thoroughness",
+          "clarity",
+          "debugging",
+          "architecture",
+          "mentorship",
+          "ui_polish",
+          "testing",
+          "documentation",
+          "systems_thinking",
+          "pragmatism",
+          "creativity"
+        ]
+      }
+    },
+    "weaknesses": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 4,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "burnout_risk",
+          "nitpicking",
+          "bikeshedding",
+          "scope_creep",
+          "deadline_misses",
+          "poor_listener",
+          "over_engineers",
+          "under_tests",
+          "slow_reviewer",
+          "meeting_dominator"
+        ]
+      }
+    },
+    "quirks": {
+      "type": "string",
+      "maxLength": 200,
+      "description": "One-sentence behavioral color. Omit if none."
+    },
+    "stats": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Optional tycoon gameplay stats (1-5) used for salary and team simulation; omit if not using economy rules.",
+      "required": [
+        "velocity",
+        "quality",
+        "focus",
+        "communication",
+        "knowledge"
+      ],
+      "properties": {
+        "velocity": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "quality": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "focus": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "communication": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "knowledge": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        }
+      }
+    }
+  }
+}

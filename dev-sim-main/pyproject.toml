@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dev-sim"
+version = "0.1.0"
+description = "CLI that uses Claude to create GitHub repos and make commits"
+requires-python = ">=3.9"
+dependencies = [
+    "anthropic>=0.40",
+    "fastapi>=0.115",
+    "httpx>=0.27",
+    "openai>=1.40",
+    "pydantic>=2.0",
+    "python-dotenv>=1.0",
+    "uvicorn[standard]>=0.30",
+]
+
+[project.scripts]
+dev-sim = "dev_sim.cli:main"
+dev-sim-review = "dev_sim.review_cli:main"
+dev-sim-orchestrate = "dev_sim.orchestrate:main"
+dev-sim-plan = "dev_sim.planner:main"
+dev-sim-run = "dev_sim.runner:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dev_sim"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/dev_sim"]

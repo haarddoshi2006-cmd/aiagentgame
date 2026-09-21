@@ -1,0 +1,21 @@
+{
+  "name": "canvas-rotating-square",
+  "version": "1.0.0",
+  "description": "Simians — CEO Mode pixel studio sim (Vite + Canvas)",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "canvas",
+    "2d",
+    "vite"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^7.2.2"
+  }
+}

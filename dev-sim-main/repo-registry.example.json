@@ -1,0 +1,6 @@
+{
+  "_comment": "Copy to repo-registry.json (same directory you run dev-sim from) or pass --repo-registry PATH. Keys are short names; values are clone URLs.",
+  "repos": {
+    "example-app": "https://github.com/octocat/Hello-World.git"
+  }
+}

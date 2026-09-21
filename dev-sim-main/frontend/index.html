@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simians — CEO Mode</title>
+    <script>
+      window.addEventListener("error", (event) => {
+        if (event.target instanceof Element) return;
+        const errorInfo = {
+          type: "scriptError",
+          timestamp: Date.now().toString(),
+          message: event.error?.message || event.message,
+          stack: event.error?.stack || "No stack trace",
+          source: window.location.href,
+        };
+        sendErrorViaPostMessage(errorInfo);
+      });
+      window.addEventListener("unhandledrejection", (event) => {
+        const errorInfo = {
+          type: "unhandledRejection",
+          timestamp: Date.now().toString(),
+          message: event.reason?.message || String(event.reason),
+          stack: event.reason?.stack || "No stack trace",
+          source: window.location.href,
+        };
+        sendErrorViaPostMessage(errorInfo);
+      });
+      const originalConsoleError = console.error;
+      console.error = function (...args) {
+        originalConsoleError.apply(console, args);
+        const errorInfo = args.map((arg) => ({
+          type: "consoleError",
+          timestamp: Date.now().toString(),
+          source: window.location.href,
+          message: arg instanceof Error ? arg.message : arg.toString(),
+          stack: arg instanceof Error ? arg.stack : null,
+        }));
+        sendErrorViaPostMessage(errorInfo);
+      };
+      function sendErrorViaPostMessage(errorInfo) {
+        window.parent.postMessage(
+          { type: "adventureGameError", data: errorInfo },
+          "*"
+        );
+      }
+    </script>
+  </head>
+  <body>
+    <canvas id="stage" aria-label="Simians office"></canvas>
+
+    <!-- TOP BAR: company HUD -->
+    <header id="topbar" class="hud">
+      <div class="brand">
+        <span class="logo">[ ]</span>
+        <div>
+          <div class="company-name">Simians Inc.</div>
+          <div class="tagline" id="tagline">Day 1 · Sprint 1 · Planning</div>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat" title="Cash on hand">
+          <div class="stat-label">CASH</div>
+          <div class="stat-value" id="stat-cash">$200,000</div>
+        </div>
+        <div class="stat" title="Sprints until bankruptcy">
+          <div class="stat-label">RUNWAY</div>
+          <div class="stat-value" id="stat-runway">99+ sprints</div>
+        </div>
+        <div class="stat" title="Burn rate per sprint">
+          <div class="stat-label">BURN</div>
+          <div class="stat-value" id="stat-burn">$0</div>
+        </div>
+        <div class="stat" title="Monthly recurring revenue">
+          <div class="stat-label">MRR</div>
+          <div class="stat-value" id="stat-mrr">$3,000/mo</div>
+        </div>
+        <div class="stat stat-valuation" title="Paper valuation toward Series A ($2M)">
+          <div class="stat-label">SERIES A</div>
+          <div class="series-a-ring-wrap" aria-hidden="true">
+            <div class="series-a-ring-track" aria-hidden="true"></div>
+            <div class="series-a-ring-fill" id="valuation-ring"></div>
+            <div class="series-a-ring-center" id="stat-valuation-pct">0%</div>
+          </div>
+          <div class="stat-value stat-valuation-num" id="stat-valuation-num">$0</div>
+        </div>
+        <div class="stat" id="stat-debt-wrap" title="Tech debt (engine)">
+          <div class="stat-label">TECH DEBT</div>
+          <div class="stat-value" id="stat-debt">0%</div>
+        </div>
+        <div class="stat" title="Public reputation">
+          <div class="stat-label">REPUTATION</div>
+          <div class="stat-value" id="stat-rep">50</div>
+        </div>
+        <div class="stat" title="Your leadership style">
+          <div class="stat-label">LEADERSHIP</div>
+          <div class="stat-value" id="stat-style">Neutral</div>
+        </div>
+      </div>
+      <div class="sprint-ledger-strip" id="sprint-ledger-strip" aria-live="polite"></div>
+      <div class="controls">
+        <button id="btn-restart-game" type="button" class="btn btn-ghost btn-restart" title="Reset client state to Day 1 (see confirm dialog)">Restart</button>
+      </div>
+    </header>
+
+    <!-- LEFT: roster + ticker -->
+    <aside id="leftpanel" class="hud">
+      <div class="panel">
+        <div class="panel-title">TEAM ROSTER</div>
+        <div id="roster"></div>
+      </div>
+      <div class="panel grow">
+        <div class="panel-title">LIVE FEED</div>
+        <div id="ticker"></div>
+      </div>
+    </aside>
+
+    <!-- RIGHT: sprint board + PR feed -->
+    <aside id="rightpanel" class="hud">
+      <div class="panel">
+        <div class="panel-title">SPRINT BOARD</div>
+        <div id="board"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-title">PULL REQUESTS</div>
+        <div id="prfeed"></div>
+      </div>
+      <div class="panel grow events-shipped-panel">
+        <div class="panel-title">EVENTS DECK</div>
+        <div id="eventsdeck"></div>
+        <div class="panel-title panel-title-stack">GENERATED PROJECTS</div>
+        <p class="panel-hint">Shipped builds — <strong>Run game</strong> opens the playable preview in a new tab.</p>
+        <div id="projects"></div>
+      </div>
+    </aside>
+
+    <!-- BOTTOM-LEFT: Chat with the team -->
+    <section id="chatdock" class="hud" tabindex="-1">
+      <div class="chat-head">
+        <span class="chat-title">CEO -&gt; TEAM CHAT</span>
+        <div class="chat-head-actions">
+          <button type="button" id="btn-agents-help" class="btn btn-ghost" style="font-size:10px;padding:4px 8px">Agents</button>
+          <button type="button" id="btn-chat-hide" class="btn btn-ghost" style="font-size:10px;padding:4px 8px" title="Hide team chat">Hide</button>
+        </div>
+      </div>
+      <div id="chatlog"></div>
+      <div class="ceo-revenue-row" title="Optional: when the agent ships, one-time hits cash immediately; monthly starts next sprint (Python ledger).">
+        <label class="ceo-rev-label"><span>Expected one-time ($)</span>
+          <input id="chat-expected-onetime" type="number" min="0" step="100" placeholder="0" inputmode="decimal" />
+        </label>
+        <label class="ceo-rev-label"><span>Expected monthly ($)</span>
+          <input id="chat-expected-monthly" type="number" min="0" step="50" placeholder="0" inputmode="decimal" />
+        </label>
+      </div>
+      <div class="orch-options-row" role="group" aria-label="Faster orchestration (less accurate)">
+        <label class="orch-opt" title="Skip the planning model; one coding pass on your full prompt.">
+          <input type="checkbox" id="orch-skip-planning" />
+          <span>Skip planning</span>
+        </label>
+        <label class="orch-opt" title="Skip K2 PR review and follow-up coding; still opens a real GitHub PR.">
+          <input type="checkbox" id="orch-skip-k2-review" />
+          <span>Skip K2 review</span>
+        </label>
+      </div>
+      <form id="chatform">
+        <input id="chatinput" type="text" autocomplete="off"
+               placeholder="Tell the team what to build... e.g. 'Make me a snake game with a dark theme'" />
+        <button class="btn btn-primary" type="submit">Send &gt;</button>
+      </form>
+    </section>
+
+    <!-- BOTTOM: action toolbar / spend levers -->
+    <footer id="bottombar" class="hud">
+      <div id="leverstrip"></div>
+      <div id="achievements"></div>
+    </footer>
+
+    <!-- floating "Chat with team" toggle -->
+    <button type="button" id="chat-toggle" aria-expanded="false" aria-controls="chatdock">Team chat</button>
+
+    <!-- toast notifications -->
+    <div id="toasts" class="hud"></div>
+
+    <!-- modal layer -->
+    <div id="modal-root" class="hud"></div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

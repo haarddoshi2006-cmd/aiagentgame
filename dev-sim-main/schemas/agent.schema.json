@@ -1,0 +1,27 @@
+{
+  "id": "string",
+  "display_name": "string",
+  "role": "frontend | backend | scrum_master | tech_lead | solutions_architect",
+
+  "years_experience": 0,
+  "seniority": "junior | mid | senior | staff",
+
+  "preferred_stack": ["string"],
+  "disliked_stack": ["string"],
+
+  "personality_traits": ["perfectionist", "shipper", "pedant", "mentor", "rockstar", "chaotic_good"],
+  "work_style": ["tdd_first", "spike_and_iterate", "meeting_heavy", "heads_down"],
+  "communication_style": "terse | verbose | diplomatic | blunt",
+
+  "quirks": ["string"],
+
+  "strengths": ["string"],
+  "weaknesses": ["string"],
+
+  "behavioral_biases": {
+    "risk_tolerance": 0.0,
+    "speed_vs_quality": 0.0,
+    "collaboration": 0.0,
+    "ego": 0.0
+  }
+}

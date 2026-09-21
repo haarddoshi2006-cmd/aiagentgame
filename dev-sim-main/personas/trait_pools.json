@@ -1,0 +1,154 @@
+{
+  "version": 2,
+  "description": "Controlled vocabulary aligned with schemas/agent.schema.v2.json. Stacks are lowercase tokens.",
+  "personality_traits": [
+    "perfectionist",
+    "shipper",
+    "pedant",
+    "mentor",
+    "rockstar",
+    "chaotic_good",
+    "contrarian",
+    "consensus_builder",
+    "risk_averse",
+    "risk_seeking",
+    "pragmatist",
+    "idealist"
+  ],
+  "work_styles": [
+    "tdd_first",
+    "spike_and_iterate",
+    "heads_down",
+    "pair_first",
+    "meeting_heavy",
+    "documentation_led"
+  ],
+  "communication_styles": [
+    "terse",
+    "verbose",
+    "diplomatic",
+    "blunt",
+    "socratic",
+    "encouraging"
+  ],
+  "strengths": [
+    "speed",
+    "thoroughness",
+    "clarity",
+    "debugging",
+    "architecture",
+    "mentorship",
+    "ui_polish",
+    "testing",
+    "documentation",
+    "systems_thinking",
+    "pragmatism",
+    "creativity"
+  ],
+  "weaknesses": [
+    "burnout_risk",
+    "nitpicking",
+    "bikeshedding",
+    "scope_creep",
+    "deadline_misses",
+    "poor_listener",
+    "over_engineers",
+    "under_tests",
+    "slow_reviewer",
+    "meeting_dominator"
+  ],
+  "quirks": [
+    "Refuses to review PRs on Fridays.",
+    "Rewrites vague PR titles before approving.",
+    "Draws a tiny sequence diagram in the PR when confused.",
+    "Ends standup early if two no-blockers in a row.",
+    "Asks for one concrete acceptance line before estimating.",
+    "Quotes a postmortem when error handling is hand-waved.",
+    "Sends a one-paragraph decision log after big threads.",
+    "Will not merge without a responsive screenshot.",
+    "Defines overloaded words (scale, simple) before debating.",
+    "Leaves philosophical nits labeled non-blocking."
+  ],
+  "preferred_stack_by_role": {
+    "frontend": [
+      "react",
+      "typescript",
+      "vite",
+      "tailwind",
+      "nextjs",
+      "playwright",
+      "tanstack.query",
+      "zustand"
+    ],
+    "backend": [
+      "go",
+      "postgres",
+      "redis",
+      "node",
+      "typescript",
+      "kafka",
+      "rust",
+      "openapi"
+    ],
+    "tech_lead": [
+      "typescript",
+      "github.actions",
+      "docker",
+      "kubernetes",
+      "aws",
+      "pytest",
+      "gradle",
+      "openapi",
+      "graphql",
+      "terraform",
+      "kafka",
+      "postgresql",
+      "event-driven",
+      "adr",
+      "linear",
+      "jira",
+      "miro",
+      "slack",
+      "notion",
+      "figjam",
+      "calendar"
+    ]
+  },
+  "disliked_stack_by_role": {
+    "frontend": [
+      "jquery",
+      "inline-styles",
+      "untyped.props",
+      "global-css.soup"
+    ],
+    "backend": [
+      "orm.magic",
+      "blocking-io",
+      "no-migrations",
+      "silent-failures"
+    ],
+    "tech_lead": [
+      "clever-metaprogramming",
+      "long-lived.branches",
+      "mystery.env",
+      "distributed-monolith",
+      "one-size.microservices",
+      "vendor.lock-in",
+      "status-only.meetings",
+      "hero-culture",
+      "six-hour.architecture-theatre"
+    ]
+  },
+  "generation_defaults": {
+    "personality_trait_count_min": 2,
+    "personality_trait_count_max": 3,
+    "strengths_min": 2,
+    "strengths_max": 4,
+    "weaknesses_min": 1,
+    "weaknesses_max": 3,
+    "stack_min": 2,
+    "stack_max": 4,
+    "disliked_stack_max": 2,
+    "quirk_chance": 0.75
+  }
+}

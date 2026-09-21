@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 1150" font-family="-apple-system, Segoe UI, Inter, Roboto, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#475569"/>
+    </marker>
+    <marker id="arrow-loop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#10B981"/>
+    </marker>
+    <marker id="arrow-hr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#DC2626"/>
+    </marker>
+    <marker id="arrow-init" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#0891B2"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1700" height="1150" fill="#F8FAFC"/>
+
+  <!-- Title -->
+  <text x="850" y="48" text-anchor="middle" font-size="26" font-weight="700" fill="#0F172A">Simians — Sprint Workflow</text>
+  <text x="850" y="74" text-anchor="middle" font-size="14" fill="#64748B">CEO prompts the studio → AI agents ship real code → CEO reviews, fires, and sets direction → loop</text>
+
+  <!-- ======================== ROW 1: INITIATION ======================== -->
+  <!-- Phase label -->
+  <text x="60" y="120" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.5">PHASE 1 · INITIATION</text>
+
+  <!-- CEO -->
+  <g>
+    <rect x="40" y="140" width="150" height="130" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2.5"/>
+    <circle cx="115" cy="185" r="22" fill="#FBBF24" stroke="#B45309" stroke-width="1.5"/>
+    <circle cx="115" cy="178" r="8" fill="#FFFBEB"/>
+    <path d="M 95 200 Q 115 188 135 200 L 135 212 L 95 212 Z" fill="#FFFBEB"/>
+    <text x="115" y="240" text-anchor="middle" font-size="14" font-weight="700" fill="#78350F">CEO</text>
+    <text x="115" y="258" text-anchor="middle" font-size="11" fill="#92400E">(the player)</text>
+  </g>
+
+  <!-- Arrow -->
+  <line x1="195" y1="205" x2="260" y2="205" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="227" y="196" text-anchor="middle" font-size="10" font-weight="600" fill="#475569">APP IDEA</text>
+  <text x="227" y="222" text-anchor="middle" font-size="10" fill="#64748B">(e.g. calculator)</text>
+
+  <!-- Orchestrator -->
+  <g>
+    <rect x="265" y="140" width="200" height="130" rx="14" fill="#FDF2F8" stroke="#EC4899" stroke-width="2.5"/>
+    <text x="365" y="168" text-anchor="middle" font-size="20">🤖</text>
+    <text x="365" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#831843">Orchestrator</text>
+    <text x="365" y="212" text-anchor="middle" font-size="11" fill="#9D174D">(Scrum Master agent)</text>
+    <text x="365" y="238" text-anchor="middle" font-size="10" fill="#BE185D">interprets prompt,</text>
+    <text x="365" y="252" text-anchor="middle" font-size="10" fill="#BE185D">drafts backlog</text>
+  </g>
+
+  <!-- Arrow -->
+  <line x1="470" y1="205" x2="530" y2="205" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="500" y="196" text-anchor="middle" font-size="10" font-weight="600" fill="#475569">BACKLOG</text>
+
+  <!-- Sprint Planning -->
+  <g>
+    <rect x="535" y="140" width="190" height="130" rx="14" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2.5"/>
+    <text x="630" y="170" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A8A">Sprint Planning</text>
+    <text x="630" y="192" text-anchor="middle" font-size="10" fill="#1E40AF">agents review backlog,</text>
+    <text x="630" y="206" text-anchor="middle" font-size="10" fill="#1E40AF">commit to sprint goal</text>
+    <rect x="555" y="222" width="150" height="36" rx="6" fill="#DBEAFE" stroke="#60A5FA" stroke-width="1"/>
+    <text x="630" y="238" text-anchor="middle" font-size="10" font-weight="700" fill="#1E3A8A">[ SPRINT GOAL ]</text>
+    <text x="630" y="252" text-anchor="middle" font-size="10" fill="#2563EB">Add multiplication</text>
+  </g>
+
+  <!-- Arrow to sprint (curving down) -->
+  <path d="M 630 275 L 630 310" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <text x="645" y="295" font-size="10" font-weight="600" fill="#475569">TASK DELEGATION</text>
+
+  <!-- ======================== ROW 2: EXECUTION ======================== -->
+  <text x="60" y="340" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.5">PHASE 2 · EXECUTION</text>
+
+  <!-- Active Sprint box containing 5 agents -->
+  <g>
+    <rect x="80" y="360" width="620" height="290" rx="14" fill="#FAF5FF" stroke="#8B5CF6" stroke-width="2.5"/>
+    <text x="100" y="388" font-size="14" font-weight="700" fill="#5B21B6">Active Sprint</text>
+    <text x="100" y="404" font-size="10" fill="#7C3AED">5 AI agents work in-character · stand-ups, coding, PR review</text>
+
+    <!-- Agents as rows -->
+    <g font-size="11" fill="#312E81">
+      <!-- Agent 1: Frontend -->
+      <g transform="translate(100, 420)">
+        <rect width="240" height="42" rx="8" fill="#EDE9FE" stroke="#A78BFA" stroke-width="1"/>
+        <circle cx="18" cy="21" r="10" fill="#6366F1"/>
+        <text x="18" y="25" text-anchor="middle" font-size="11" fill="#FFFFFF" font-weight="700">FE</text>
+        <text x="38" y="18" font-weight="700" fill="#312E81">Frontend Dev · Mira</text>
+        <text x="38" y="33" font-size="10" fill="#4C1D95">React + TS · writes UI code</text>
+      </g>
+      <!-- Agent 2: Backend -->
+      <g transform="translate(100, 470)">
+        <rect width="240" height="42" rx="8" fill="#EDE9FE" stroke="#A78BFA" stroke-width="1"/>
+        <circle cx="18" cy="21" r="10" fill="#6366F1"/>
+        <text x="18" y="25" text-anchor="middle" font-size="10" fill="#FFFFFF" font-weight="700">BE</text>
+        <text x="38" y="18" font-weight="700" fill="#312E81">Backend Dev · Dmitri</text>
+        <text x="38" y="33" font-size="10" fill="#4C1D95">Go + Postgres · writes API</text>
+      </g>
+      <!-- Agent 3: Scrum Master -->
+      <g transform="translate(100, 520)">
+        <rect width="240" height="42" rx="8" fill="#EDE9FE" stroke="#A78BFA" stroke-width="1"/>
+        <circle cx="18" cy="21" r="10" fill="#EC4899"/>
+        <text x="18" y="25" text-anchor="middle" font-size="10" fill="#FFFFFF" font-weight="700">SM</text>
+        <text x="38" y="18" font-weight="700" fill="#312E81">Scrum Master · Priya</text>
+        <text x="38" y="33" font-size="10" fill="#4C1D95">runs stand-up, unblocks team</text>
+      </g>
+      <!-- Agent 4: Tech Lead -->
+      <g transform="translate(100, 570)">
+        <rect width="240" height="42" rx="8" fill="#EDE9FE" stroke="#A78BFA" stroke-width="1"/>
+        <circle cx="18" cy="21" r="10" fill="#F59E0B"/>
+        <text x="18" y="25" text-anchor="middle" font-size="10" fill="#FFFFFF" font-weight="700">TL</text>
+        <text x="38" y="18" font-weight="700" fill="#312E81">Tech Lead · Jules</text>
+        <text x="38" y="33" font-size="10" fill="#4C1D95">reviews PRs, enforces quality</text>
+      </g>
+      <!-- Agent 5: Solutions Architect -->
+      <g transform="translate(100, 620)">
+        <rect width="240" height="20" rx="8" fill="#EDE9FE" stroke="#A78BFA" stroke-width="1"/>
+        <circle cx="18" cy="10" r="8" fill="#10B981"/>
+        <text x="18" y="14" text-anchor="middle" font-size="9" fill="#FFFFFF" font-weight="700">SA</text>
+        <text x="38" y="14" font-weight="700" fill="#312E81" font-size="10">Solutions Architect · Ari · ADRs, system design</text>
+      </g>
+    </g>
+
+    <!-- Right side: GitHub callout inside Active Sprint box -->
+    <g>
+      <rect x="360" y="420" width="320" height="220" rx="10" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+      <text x="380" y="444" font-size="12" font-weight="700" fill="#F1F5F9">⟨/⟩  Real GitHub repository</text>
+      <text x="380" y="460" font-size="10" fill="#94A3B8">every action produces real Git history</text>
+
+      <!-- Branch illustration -->
+      <line x1="380" y1="490" x2="660" y2="490" stroke="#64748B" stroke-width="2"/>
+      <text x="380" y="484" font-size="9" fill="#94A3B8">main</text>
+
+      <!-- FE branch -->
+      <path d="M 410 490 Q 420 490 420 505 L 420 520 Q 420 530 430 530 L 560 530 Q 570 530 570 520 L 570 490" fill="none" stroke="#6366F1" stroke-width="2"/>
+      <circle cx="450" cy="530" r="4" fill="#6366F1"/>
+      <circle cx="490" cy="530" r="4" fill="#6366F1"/>
+      <circle cx="530" cy="530" r="4" fill="#6366F1"/>
+      <text x="380" y="524" font-size="9" fill="#A5B4FC">feat/mira/*</text>
+      <text x="442" y="548" font-size="8" fill="#94A3B8">commits</text>
+
+      <!-- BE branch -->
+      <path d="M 440 490 Q 450 490 450 565 L 450 580 Q 450 590 460 590 L 600 590 Q 610 590 610 580 L 610 490" fill="none" stroke="#10B981" stroke-width="2"/>
+      <circle cx="480" cy="590" r="4" fill="#10B981"/>
+      <circle cx="520" cy="590" r="4" fill="#10B981"/>
+      <circle cx="560" cy="590" r="4" fill="#10B981"/>
+      <text x="380" y="594" font-size="9" fill="#6EE7B7">feat/dmitri/*</text>
+
+      <!-- PR review speech -->
+      <rect x="490" y="608" width="180" height="26" rx="4" fill="#1F2937" stroke="#F59E0B" stroke-width="1"/>
+      <text x="498" y="620" font-size="8" fill="#FCD34D" font-weight="700">TL Jules · PR review:</text>
+      <text x="498" y="630" font-size="8" fill="#FDE68A">"needs tests before merge"</text>
+    </g>
+  </g>
+
+  <!-- Arrow from Active Sprint to Scoring (right) -->
+  <line x1="705" y1="505" x2="770" y2="505" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="738" y="496" text-anchor="middle" font-size="10" font-weight="600" fill="#475569">SPRINT END</text>
+
+  <!-- ======================== ROW 3: SCORING & DECISION ======================== -->
+  <text x="770" y="340" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.5">PHASE 3 · SCORING</text>
+
+  <!-- Scoring Engine -->
+  <g>
+    <rect x="770" y="360" width="200" height="290" rx="14" fill="#FEF2F2" stroke="#F97316" stroke-width="2.5"/>
+    <text x="870" y="388" text-anchor="middle" font-size="14" font-weight="700" fill="#9A3412">📊  Scoring Engine</text>
+    <text x="870" y="408" text-anchor="middle" font-size="10" fill="#C2410C">per-agent sprint score</text>
+    <line x1="785" y1="420" x2="955" y2="420" stroke="#FDBA74" stroke-width="1"/>
+    <g font-size="10.5" fill="#7C2D12">
+      <text x="790" y="444">• commits &amp; PR size</text>
+      <text x="790" y="466">• review comments</text>
+      <text x="790" y="488">• build pass rate</text>
+      <text x="790" y="510">• time-to-merge</text>
+      <text x="790" y="532">• in-character quality</text>
+      <text x="790" y="554">• team-fit signals</text>
+    </g>
+    <!-- Score example -->
+    <rect x="790" y="570" width="160" height="60" rx="8" fill="#FFEDD5" stroke="#FB923C" stroke-width="1"/>
+    <text x="870" y="588" text-anchor="middle" font-size="10" font-weight="700" fill="#9A3412">EXAMPLE OUTPUT</text>
+    <text x="800" y="606" font-size="10" fill="#7C2D12">Mira  · 87</text>
+    <text x="890" y="606" font-size="10" fill="#7C2D12">Priya · 79</text>
+    <text x="800" y="622" font-size="10" fill="#DC2626" font-weight="700">Dmitri · 41 ⚠</text>
+    <text x="890" y="622" font-size="10" fill="#7C2D12">Jules · 82</text>
+  </g>
+
+  <!-- Arrow -->
+  <line x1="975" y1="505" x2="1035" y2="505" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="1005" y="496" text-anchor="middle" font-size="10" font-weight="600" fill="#475569">REPORT</text>
+
+  <!-- CEO Decision Panel -->
+  <text x="1040" y="340" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.5">PHASE 4 · CEO DECISION</text>
+  <g>
+    <rect x="1040" y="360" width="560" height="290" rx="14" fill="#FFFBEB" stroke="#F59E0B" stroke-width="2.5"/>
+    <text x="1060" y="388" font-size="14" font-weight="700" fill="#78350F">🎮  End-of-Sprint Panel</text>
+    <text x="1060" y="404" font-size="10" fill="#92400E">CEO reviews scores and pulls two levers</text>
+
+    <!-- Keep / Fire buttons -->
+    <g>
+      <rect x="1060" y="420" width="230" height="100" rx="10" fill="#F0FDF4" stroke="#22C55E" stroke-width="1.5"/>
+      <text x="1175" y="442" text-anchor="middle" font-size="11" font-weight="700" fill="#166534">HR LEVER · Keep or Fire</text>
+      <rect x="1074" y="452" width="95" height="28" rx="6" fill="#DCFCE7" stroke="#16A34A" stroke-width="1"/>
+      <text x="1121" y="470" text-anchor="middle" font-size="11" font-weight="700" fill="#166534">✓ KEEP</text>
+      <rect x="1181" y="452" width="95" height="28" rx="6" fill="#FEE2E2" stroke="#DC2626" stroke-width="1"/>
+      <text x="1228" y="470" text-anchor="middle" font-size="11" font-weight="700" fill="#991B1B">✕ FIRE</text>
+      <text x="1175" y="502" text-anchor="middle" font-size="10" fill="#14532D">applied per agent</text>
+    </g>
+
+    <!-- Candidate picker shown as sub-flow when fire -->
+    <g>
+      <rect x="1300" y="420" width="285" height="100" rx="10" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.5"/>
+      <text x="1442" y="442" text-anchor="middle" font-size="11" font-weight="700" fill="#7F1D1D">Replacement Picker (on fire)</text>
+      <g font-size="10" fill="#7F1D1D">
+        <rect x="1312" y="454" width="82" height="56" rx="6" fill="#FFFFFF" stroke="#FCA5A5" stroke-width="1"/>
+        <text x="1353" y="468" text-anchor="middle" font-size="9" font-weight="700" fill="#DC2626">HIGH CONTRAST</text>
+        <text x="1353" y="484" text-anchor="middle" font-size="9" fill="#7F1D1D">Rachel</text>
+        <text x="1353" y="498" text-anchor="middle" font-size="8" fill="#991B1B">tdd · diplomatic</text>
+
+        <rect x="1401" y="454" width="82" height="56" rx="6" fill="#FFFFFF" stroke="#FCA5A5" stroke-width="1"/>
+        <text x="1442" y="468" text-anchor="middle" font-size="9" font-weight="700" fill="#DC2626">MODERATE</text>
+        <text x="1442" y="484" text-anchor="middle" font-size="9" fill="#7F1D1D">Kenji</text>
+        <text x="1442" y="498" text-anchor="middle" font-size="8" fill="#991B1B">shipper · verbose</text>
+
+        <rect x="1490" y="454" width="82" height="56" rx="6" fill="#FFFFFF" stroke="#FCA5A5" stroke-width="1"/>
+        <text x="1531" y="468" text-anchor="middle" font-size="9" font-weight="700" fill="#DC2626">WILDCARD</text>
+        <text x="1531" y="484" text-anchor="middle" font-size="9" fill="#7F1D1D">Noor</text>
+        <text x="1531" y="498" text-anchor="middle" font-size="8" fill="#991B1B">chaotic-good</text>
+      </g>
+    </g>
+
+    <!-- Corporate initiative -->
+    <g>
+      <rect x="1060" y="540" width="525" height="95" rx="10" fill="#ECFEFF" stroke="#0891B2" stroke-width="1.5"/>
+      <text x="1075" y="562" font-size="11" font-weight="700" fill="#155E75">🧭  DIRECTION LEVER · Corporate Initiative (optional)</text>
+      <text x="1075" y="580" font-size="10" fill="#0E7490">adds a feature, rewrites agent prompts, re-weights scoring for next sprint</text>
+      <g font-size="9">
+        <rect x="1075" y="590" width="160" height="38" rx="6" fill="#CFFAFE" stroke="#22D3EE" stroke-width="1"/>
+        <text x="1155" y="605" text-anchor="middle" font-weight="700" fill="#155E75">Ship Faster</text>
+        <text x="1155" y="620" text-anchor="middle" fill="#0E7490">+velocity weight</text>
+
+        <rect x="1245" y="590" width="160" height="38" rx="6" fill="#CFFAFE" stroke="#22D3EE" stroke-width="1"/>
+        <text x="1325" y="605" text-anchor="middle" font-weight="700" fill="#155E75">Add API /v1/</text>
+        <text x="1325" y="620" text-anchor="middle" fill="#0E7490">adds versioning task</text>
+
+        <rect x="1415" y="590" width="160" height="38" rx="6" fill="#CFFAFE" stroke="#22D3EE" stroke-width="1"/>
+        <text x="1495" y="605" text-anchor="middle" font-weight="700" fill="#155E75">Compliance Qtr</text>
+        <text x="1495" y="620" text-anchor="middle" fill="#0E7490">+ coverage floor</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ======================== ROW 4: FEEDBACK LOOP ======================== -->
+  <text x="60" y="710" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.5">PHASE 5 · LOOP RESTART · decisions reshape the next sprint</text>
+
+  <!-- Two output blocks -->
+  <g>
+    <!-- HR output -->
+    <rect x="1060" y="730" width="260" height="90" rx="12" fill="#FEE2E2" stroke="#DC2626" stroke-width="2"/>
+    <text x="1190" y="754" text-anchor="middle" font-size="12" font-weight="700" fill="#7F1D1D">HR OUTPUT</text>
+    <text x="1190" y="772" text-anchor="middle" font-size="10" fill="#991B1B">roster changed · new hire joins</text>
+    <text x="1190" y="790" text-anchor="middle" font-size="10" fill="#991B1B">new persona = new voice</text>
+    <text x="1190" y="808" text-anchor="middle" font-size="10" fill="#991B1B">grace period for new hires</text>
+  </g>
+
+  <g>
+    <!-- Initiative output -->
+    <rect x="1340" y="730" width="260" height="90" rx="12" fill="#ECFEFF" stroke="#0891B2" stroke-width="2"/>
+    <text x="1470" y="754" text-anchor="middle" font-size="12" font-weight="700" fill="#155E75">INITIATIVE OUTPUT</text>
+    <text x="1470" y="772" text-anchor="middle" font-size="10" fill="#0E7490">backlog +1 feature</text>
+    <text x="1470" y="790" text-anchor="middle" font-size="10" fill="#0E7490">agent prompts updated</text>
+    <text x="1470" y="808" text-anchor="middle" font-size="10" fill="#0E7490">scoring weights shifted</text>
+  </g>
+
+  <!-- Arrows from Decision Panel down to the two outputs -->
+  <path d="M 1190 652 L 1190 728" stroke="#DC2626" stroke-width="2" fill="none" marker-end="url(#arrow-hr)"/>
+  <path d="M 1470 652 L 1470 728" stroke="#0891B2" stroke-width="2" fill="none" marker-end="url(#arrow-init)"/>
+
+  <!-- Convergence: both outputs curve down, merge, and loop back to Sprint Planning (top-left area) -->
+  <!-- First, both flow into a merge point at bottom center -->
+  <path d="M 1190 825 L 1190 880 L 900 880" stroke="#10B981" stroke-width="3" fill="none"/>
+  <path d="M 1470 825 L 1470 900 L 1470 880 L 900 880" stroke="#10B981" stroke-width="3" fill="none"/>
+
+  <!-- Merged path loops back up-left to Sprint Planning's top -->
+  <path d="M 900 880 L 630 880 L 630 1000 L 150 1000 L 150 290 L 400 290 L 400 270"
+        stroke="#10B981" stroke-width="3" fill="none" stroke-linejoin="round" marker-end="url(#arrow-loop)" opacity="0"/>
+  <!-- Use a cleaner single path -->
+  <path d="M 1470 880 Q 1470 940 1300 940 L 400 940 Q 200 940 200 760 L 200 305 Q 200 285 220 285 L 358 285"
+        stroke="#10B981" stroke-width="3" fill="none" stroke-linejoin="round" marker-end="url(#arrow-loop)"/>
+
+  <!-- Loop restart label -->
+  <g>
+    <rect x="770" y="920" width="220" height="40" rx="20" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+    <text x="880" y="945" text-anchor="middle" font-size="13" font-weight="700" fill="#065F46">↻  LOOP RESTART  ↻</text>
+  </g>
+
+  <!-- ======================== LEGEND ======================== -->
+  <g transform="translate(40, 1060)">
+    <text x="0" y="0" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.5">LEGEND</text>
+    <g transform="translate(0, 18)" font-size="11" fill="#334155">
+      <rect x="0" y="0" width="16" height="16" rx="3" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.5"/>
+      <text x="24" y="13">CEO / player action</text>
+
+      <rect x="190" y="0" width="16" height="16" rx="3" fill="#FDF2F8" stroke="#EC4899" stroke-width="1.5"/>
+      <text x="214" y="13">Orchestrator / system</text>
+
+      <rect x="390" y="0" width="16" height="16" rx="3" fill="#FAF5FF" stroke="#8B5CF6" stroke-width="1.5"/>
+      <text x="414" y="13">AI agents (execution)</text>
+
+      <rect x="590" y="0" width="16" height="16" rx="3" fill="#FEF2F2" stroke="#F97316" stroke-width="1.5"/>
+      <text x="614" y="13">Scoring engine</text>
+
+      <rect x="760" y="0" width="16" height="16" rx="3" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+      <text x="784" y="13" fill="#334155">GitHub (real repo)</text>
+
+      <line x1="930" y1="8" x2="960" y2="8" stroke="#10B981" stroke-width="3"/>
+      <text x="968" y="13">feedback loop (closes the cycle)</text>
+    </g>
+  </g>
+
+</svg>
